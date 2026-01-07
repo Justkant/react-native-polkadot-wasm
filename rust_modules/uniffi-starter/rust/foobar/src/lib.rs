@@ -9,8 +9,8 @@ pub mod ed25519;
 #[path = "hashing.rs"]
 pub mod hashing;
 
-// #[path = "secp256k1.rs"]
-// pub mod secp256k1;
+#[path = "secp256k1.rs"]
+pub mod secp256k1;
 
 #[path = "sr25519.rs"]
 pub mod sr25519;

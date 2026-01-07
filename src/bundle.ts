@@ -53,59 +53,45 @@ export const ed25519Verify = (
   );
 };
 
-// export const secp256k1FromSeed = /*#__PURE__*/ withWasm(
-//   (wasm, seckey: Uint8Array): Uint8Array => {
-//     wasm.ext_secp_from_seed(8, ...bridge.allocU8a(seckey));
+export const secp256k1FromSeed = (seckey: Uint8Array): Uint8Array => {
+  return new Uint8Array(foobar.extSecpFromSeed(seckey.buffer as ArrayBuffer));
+};
 
-//     return bridge.resultU8a();
-//   }
-// );
+export const secp256k1Compress = (pubkey: Uint8Array): Uint8Array => {
+  return new Uint8Array(
+    foobar.extSecpPubCompress(pubkey.buffer as ArrayBuffer)
+  );
+};
 
-// export const secp256k1Compress = /*#__PURE__*/ withWasm(
-//   (wasm, pubkey: Uint8Array): Uint8Array => {
-//     wasm.ext_secp_pub_compress(8, ...bridge.allocU8a(pubkey));
+export const secp256k1Expand = (pubkey: Uint8Array): Uint8Array => {
+  return new Uint8Array(foobar.extSecpPubExpand(pubkey.buffer as ArrayBuffer));
+};
 
-//     return bridge.resultU8a();
-//   }
-// );
+export const secp256k1Recover = (
+  msgHash: Uint8Array,
+  sig: Uint8Array,
+  recovery: number
+): Uint8Array => {
+  return new Uint8Array(
+    foobar.extSecpRecover(
+      msgHash.buffer as ArrayBuffer,
+      sig.buffer as ArrayBuffer,
+      recovery
+    )
+  );
+};
 
-// export const secp256k1Expand = /*#__PURE__*/ withWasm(
-//   (wasm, pubkey: Uint8Array): Uint8Array => {
-//     wasm.ext_secp_pub_expand(8, ...bridge.allocU8a(pubkey));
-
-//     return bridge.resultU8a();
-//   }
-// );
-
-// export const secp256k1Recover = /*#__PURE__*/ withWasm(
-//   (
-//     wasm,
-//     msgHash: Uint8Array,
-//     sig: Uint8Array,
-//     recovery: number
-//   ): Uint8Array => {
-//     wasm.ext_secp_recover(
-//       8,
-//       ...bridge.allocU8a(msgHash),
-//       ...bridge.allocU8a(sig),
-//       recovery
-//     );
-
-//     return bridge.resultU8a();
-//   }
-// );
-
-// export const secp256k1Sign = /*#__PURE__*/ withWasm(
-//   (wasm, msgHash: Uint8Array, seckey: Uint8Array): Uint8Array => {
-//     wasm.ext_secp_sign(
-//       8,
-//       ...bridge.allocU8a(msgHash),
-//       ...bridge.allocU8a(seckey)
-//     );
-
-//     return bridge.resultU8a();
-//   }
-// );
+export const secp256k1Sign = (
+  msgHash: Uint8Array,
+  seckey: Uint8Array
+): Uint8Array => {
+  return new Uint8Array(
+    foobar.extSecpSign(
+      msgHash.buffer as ArrayBuffer,
+      seckey.buffer as ArrayBuffer
+    )
+  );
+};
 
 export const sr25519DeriveKeypairHard = (
   pair: Uint8Array,

@@ -38,6 +38,7 @@ import {
   type UniffiByteArray,
   FfiConverterArrayBuffer,
   FfiConverterBool,
+  FfiConverterInt32,
   FfiConverterUInt32,
   FfiConverterUInt8,
   RustBuffer,
@@ -401,6 +402,81 @@ export function extScrypt(
           FfiConverterUInt8.lower(log2N),
           FfiConverterUInt32.lower(r),
           FfiConverterUInt32.lower(p),
+          callStatus
+        );
+      },
+      /*liftString:*/ FfiConverterString.lift
+    )
+  );
+}
+export function extSecpFromSeed(seed: ArrayBuffer): ArrayBuffer {
+  return FfiConverterArrayBuffer.lift(
+    uniffiCaller.rustCall(
+      /*caller:*/ (callStatus) => {
+        return nativeModule().ubrn_uniffi_foobar_fn_func_ext_secp_from_seed(
+          FfiConverterArrayBuffer.lower(seed),
+          callStatus
+        );
+      },
+      /*liftString:*/ FfiConverterString.lift
+    )
+  );
+}
+export function extSecpPubCompress(pubkey: ArrayBuffer): ArrayBuffer {
+  return FfiConverterArrayBuffer.lift(
+    uniffiCaller.rustCall(
+      /*caller:*/ (callStatus) => {
+        return nativeModule().ubrn_uniffi_foobar_fn_func_ext_secp_pub_compress(
+          FfiConverterArrayBuffer.lower(pubkey),
+          callStatus
+        );
+      },
+      /*liftString:*/ FfiConverterString.lift
+    )
+  );
+}
+export function extSecpPubExpand(pubkey: ArrayBuffer): ArrayBuffer {
+  return FfiConverterArrayBuffer.lift(
+    uniffiCaller.rustCall(
+      /*caller:*/ (callStatus) => {
+        return nativeModule().ubrn_uniffi_foobar_fn_func_ext_secp_pub_expand(
+          FfiConverterArrayBuffer.lower(pubkey),
+          callStatus
+        );
+      },
+      /*liftString:*/ FfiConverterString.lift
+    )
+  );
+}
+export function extSecpRecover(
+  hash: ArrayBuffer,
+  sig: ArrayBuffer,
+  rec: /*i32*/ number
+): ArrayBuffer {
+  return FfiConverterArrayBuffer.lift(
+    uniffiCaller.rustCall(
+      /*caller:*/ (callStatus) => {
+        return nativeModule().ubrn_uniffi_foobar_fn_func_ext_secp_recover(
+          FfiConverterArrayBuffer.lower(hash),
+          FfiConverterArrayBuffer.lower(sig),
+          FfiConverterInt32.lower(rec),
+          callStatus
+        );
+      },
+      /*liftString:*/ FfiConverterString.lift
+    )
+  );
+}
+export function extSecpSign(
+  hash: ArrayBuffer,
+  seckey: ArrayBuffer
+): ArrayBuffer {
+  return FfiConverterArrayBuffer.lift(
+    uniffiCaller.rustCall(
+      /*caller:*/ (callStatus) => {
+        return nativeModule().ubrn_uniffi_foobar_fn_func_ext_secp_sign(
+          FfiConverterArrayBuffer.lower(hash),
+          FfiConverterArrayBuffer.lower(seckey),
           callStatus
         );
       },
@@ -865,6 +941,44 @@ function uniffiEnsureInitialized() {
   if (nativeModule().ubrn_uniffi_foobar_checksum_func_ext_scrypt() !== 17405) {
     throw new UniffiInternalError.ApiChecksumMismatch(
       'uniffi_foobar_checksum_func_ext_scrypt'
+    );
+  }
+  if (
+    nativeModule().ubrn_uniffi_foobar_checksum_func_ext_secp_from_seed() !==
+    57689
+  ) {
+    throw new UniffiInternalError.ApiChecksumMismatch(
+      'uniffi_foobar_checksum_func_ext_secp_from_seed'
+    );
+  }
+  if (
+    nativeModule().ubrn_uniffi_foobar_checksum_func_ext_secp_pub_compress() !==
+    31291
+  ) {
+    throw new UniffiInternalError.ApiChecksumMismatch(
+      'uniffi_foobar_checksum_func_ext_secp_pub_compress'
+    );
+  }
+  if (
+    nativeModule().ubrn_uniffi_foobar_checksum_func_ext_secp_pub_expand() !==
+    47532
+  ) {
+    throw new UniffiInternalError.ApiChecksumMismatch(
+      'uniffi_foobar_checksum_func_ext_secp_pub_expand'
+    );
+  }
+  if (
+    nativeModule().ubrn_uniffi_foobar_checksum_func_ext_secp_recover() !== 61429
+  ) {
+    throw new UniffiInternalError.ApiChecksumMismatch(
+      'uniffi_foobar_checksum_func_ext_secp_recover'
+    );
+  }
+  if (
+    nativeModule().ubrn_uniffi_foobar_checksum_func_ext_secp_sign() !== 3667
+  ) {
+    throw new UniffiInternalError.ApiChecksumMismatch(
+      'uniffi_foobar_checksum_func_ext_secp_sign'
     );
   }
   if (nativeModule().ubrn_uniffi_foobar_checksum_func_ext_sha256() !== 45395) {

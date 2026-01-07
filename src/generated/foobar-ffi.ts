@@ -103,6 +103,29 @@ interface NativeModuleInterface {
     p: number,
     uniffi_out_err: UniffiRustCallStatus
   ): Uint8Array;
+  ubrn_uniffi_foobar_fn_func_ext_secp_from_seed(
+    seed: Uint8Array,
+    uniffi_out_err: UniffiRustCallStatus
+  ): Uint8Array;
+  ubrn_uniffi_foobar_fn_func_ext_secp_pub_compress(
+    pubkey: Uint8Array,
+    uniffi_out_err: UniffiRustCallStatus
+  ): Uint8Array;
+  ubrn_uniffi_foobar_fn_func_ext_secp_pub_expand(
+    pubkey: Uint8Array,
+    uniffi_out_err: UniffiRustCallStatus
+  ): Uint8Array;
+  ubrn_uniffi_foobar_fn_func_ext_secp_recover(
+    hash: Uint8Array,
+    sig: Uint8Array,
+    rec: number,
+    uniffi_out_err: UniffiRustCallStatus
+  ): Uint8Array;
+  ubrn_uniffi_foobar_fn_func_ext_secp_sign(
+    hash: Uint8Array,
+    seckey: Uint8Array,
+    uniffi_out_err: UniffiRustCallStatus
+  ): Uint8Array;
   ubrn_uniffi_foobar_fn_func_ext_sha256(
     data: Uint8Array,
     uniffi_out_err: UniffiRustCallStatus
@@ -182,6 +205,11 @@ interface NativeModuleInterface {
   ubrn_uniffi_foobar_checksum_func_ext_keccak512(): number;
   ubrn_uniffi_foobar_checksum_func_ext_pbkdf2(): number;
   ubrn_uniffi_foobar_checksum_func_ext_scrypt(): number;
+  ubrn_uniffi_foobar_checksum_func_ext_secp_from_seed(): number;
+  ubrn_uniffi_foobar_checksum_func_ext_secp_pub_compress(): number;
+  ubrn_uniffi_foobar_checksum_func_ext_secp_pub_expand(): number;
+  ubrn_uniffi_foobar_checksum_func_ext_secp_recover(): number;
+  ubrn_uniffi_foobar_checksum_func_ext_secp_sign(): number;
   ubrn_uniffi_foobar_checksum_func_ext_sha256(): number;
   ubrn_uniffi_foobar_checksum_func_ext_sha512(): number;
   ubrn_uniffi_foobar_checksum_func_ext_sr_agree(): number;

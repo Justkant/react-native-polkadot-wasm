@@ -144,6 +144,22 @@ RustBuffer uniffi_foobar_fn_func_ext_scrypt(RustBuffer password,
                                             RustBuffer salt, uint8_t log2_n,
                                             uint32_t r, uint32_t p,
                                             RustCallStatus *uniffi_out_err);
+RustBuffer
+uniffi_foobar_fn_func_ext_secp_from_seed(RustBuffer seed,
+                                         RustCallStatus *uniffi_out_err);
+RustBuffer
+uniffi_foobar_fn_func_ext_secp_pub_compress(RustBuffer pubkey,
+                                            RustCallStatus *uniffi_out_err);
+RustBuffer
+uniffi_foobar_fn_func_ext_secp_pub_expand(RustBuffer pubkey,
+                                          RustCallStatus *uniffi_out_err);
+RustBuffer
+uniffi_foobar_fn_func_ext_secp_recover(RustBuffer hash, RustBuffer sig,
+                                       int32_t rec,
+                                       RustCallStatus *uniffi_out_err);
+RustBuffer uniffi_foobar_fn_func_ext_secp_sign(RustBuffer hash,
+                                               RustBuffer seckey,
+                                               RustCallStatus *uniffi_out_err);
 RustBuffer uniffi_foobar_fn_func_ext_sha256(RustBuffer data,
                                             RustCallStatus *uniffi_out_err);
 RustBuffer uniffi_foobar_fn_func_ext_sha512(RustBuffer data,
@@ -316,6 +332,11 @@ uint16_t uniffi_foobar_checksum_func_ext_keccak256();
 uint16_t uniffi_foobar_checksum_func_ext_keccak512();
 uint16_t uniffi_foobar_checksum_func_ext_pbkdf2();
 uint16_t uniffi_foobar_checksum_func_ext_scrypt();
+uint16_t uniffi_foobar_checksum_func_ext_secp_from_seed();
+uint16_t uniffi_foobar_checksum_func_ext_secp_pub_compress();
+uint16_t uniffi_foobar_checksum_func_ext_secp_pub_expand();
+uint16_t uniffi_foobar_checksum_func_ext_secp_recover();
+uint16_t uniffi_foobar_checksum_func_ext_secp_sign();
 uint16_t uniffi_foobar_checksum_func_ext_sha256();
 uint16_t uniffi_foobar_checksum_func_ext_sha512();
 uint16_t uniffi_foobar_checksum_func_ext_sr_agree();
@@ -1902,6 +1923,61 @@ NativeFoobar::NativeFoobar(
             return this->cpp_uniffi_foobar_fn_func_ext_scrypt(rt, thisVal, args,
                                                               count);
           });
+  props["ubrn_uniffi_foobar_fn_func_ext_secp_from_seed"] =
+      jsi::Function::createFromHostFunction(
+          rt,
+          jsi::PropNameID::forAscii(
+              rt, "ubrn_uniffi_foobar_fn_func_ext_secp_from_seed"),
+          1,
+          [this](jsi::Runtime &rt, const jsi::Value &thisVal,
+                 const jsi::Value *args, size_t count) -> jsi::Value {
+            return this->cpp_uniffi_foobar_fn_func_ext_secp_from_seed(
+                rt, thisVal, args, count);
+          });
+  props["ubrn_uniffi_foobar_fn_func_ext_secp_pub_compress"] =
+      jsi::Function::createFromHostFunction(
+          rt,
+          jsi::PropNameID::forAscii(
+              rt, "ubrn_uniffi_foobar_fn_func_ext_secp_pub_compress"),
+          1,
+          [this](jsi::Runtime &rt, const jsi::Value &thisVal,
+                 const jsi::Value *args, size_t count) -> jsi::Value {
+            return this->cpp_uniffi_foobar_fn_func_ext_secp_pub_compress(
+                rt, thisVal, args, count);
+          });
+  props["ubrn_uniffi_foobar_fn_func_ext_secp_pub_expand"] =
+      jsi::Function::createFromHostFunction(
+          rt,
+          jsi::PropNameID::forAscii(
+              rt, "ubrn_uniffi_foobar_fn_func_ext_secp_pub_expand"),
+          1,
+          [this](jsi::Runtime &rt, const jsi::Value &thisVal,
+                 const jsi::Value *args, size_t count) -> jsi::Value {
+            return this->cpp_uniffi_foobar_fn_func_ext_secp_pub_expand(
+                rt, thisVal, args, count);
+          });
+  props["ubrn_uniffi_foobar_fn_func_ext_secp_recover"] =
+      jsi::Function::createFromHostFunction(
+          rt,
+          jsi::PropNameID::forAscii(
+              rt, "ubrn_uniffi_foobar_fn_func_ext_secp_recover"),
+          3,
+          [this](jsi::Runtime &rt, const jsi::Value &thisVal,
+                 const jsi::Value *args, size_t count) -> jsi::Value {
+            return this->cpp_uniffi_foobar_fn_func_ext_secp_recover(
+                rt, thisVal, args, count);
+          });
+  props["ubrn_uniffi_foobar_fn_func_ext_secp_sign"] =
+      jsi::Function::createFromHostFunction(
+          rt,
+          jsi::PropNameID::forAscii(rt,
+                                    "ubrn_uniffi_foobar_fn_func_ext_secp_sign"),
+          2,
+          [this](jsi::Runtime &rt, const jsi::Value &thisVal,
+                 const jsi::Value *args, size_t count) -> jsi::Value {
+            return this->cpp_uniffi_foobar_fn_func_ext_secp_sign(rt, thisVal,
+                                                                 args, count);
+          });
   props["ubrn_uniffi_foobar_fn_func_ext_sha256"] =
       jsi::Function::createFromHostFunction(
           rt,
@@ -2197,6 +2273,61 @@ NativeFoobar::NativeFoobar(
           [this](jsi::Runtime &rt, const jsi::Value &thisVal,
                  const jsi::Value *args, size_t count) -> jsi::Value {
             return this->cpp_uniffi_foobar_checksum_func_ext_scrypt(
+                rt, thisVal, args, count);
+          });
+  props["ubrn_uniffi_foobar_checksum_func_ext_secp_from_seed"] =
+      jsi::Function::createFromHostFunction(
+          rt,
+          jsi::PropNameID::forAscii(
+              rt, "ubrn_uniffi_foobar_checksum_func_ext_secp_from_seed"),
+          0,
+          [this](jsi::Runtime &rt, const jsi::Value &thisVal,
+                 const jsi::Value *args, size_t count) -> jsi::Value {
+            return this->cpp_uniffi_foobar_checksum_func_ext_secp_from_seed(
+                rt, thisVal, args, count);
+          });
+  props["ubrn_uniffi_foobar_checksum_func_ext_secp_pub_compress"] =
+      jsi::Function::createFromHostFunction(
+          rt,
+          jsi::PropNameID::forAscii(
+              rt, "ubrn_uniffi_foobar_checksum_func_ext_secp_pub_compress"),
+          0,
+          [this](jsi::Runtime &rt, const jsi::Value &thisVal,
+                 const jsi::Value *args, size_t count) -> jsi::Value {
+            return this->cpp_uniffi_foobar_checksum_func_ext_secp_pub_compress(
+                rt, thisVal, args, count);
+          });
+  props["ubrn_uniffi_foobar_checksum_func_ext_secp_pub_expand"] =
+      jsi::Function::createFromHostFunction(
+          rt,
+          jsi::PropNameID::forAscii(
+              rt, "ubrn_uniffi_foobar_checksum_func_ext_secp_pub_expand"),
+          0,
+          [this](jsi::Runtime &rt, const jsi::Value &thisVal,
+                 const jsi::Value *args, size_t count) -> jsi::Value {
+            return this->cpp_uniffi_foobar_checksum_func_ext_secp_pub_expand(
+                rt, thisVal, args, count);
+          });
+  props["ubrn_uniffi_foobar_checksum_func_ext_secp_recover"] =
+      jsi::Function::createFromHostFunction(
+          rt,
+          jsi::PropNameID::forAscii(
+              rt, "ubrn_uniffi_foobar_checksum_func_ext_secp_recover"),
+          0,
+          [this](jsi::Runtime &rt, const jsi::Value &thisVal,
+                 const jsi::Value *args, size_t count) -> jsi::Value {
+            return this->cpp_uniffi_foobar_checksum_func_ext_secp_recover(
+                rt, thisVal, args, count);
+          });
+  props["ubrn_uniffi_foobar_checksum_func_ext_secp_sign"] =
+      jsi::Function::createFromHostFunction(
+          rt,
+          jsi::PropNameID::forAscii(
+              rt, "ubrn_uniffi_foobar_checksum_func_ext_secp_sign"),
+          0,
+          [this](jsi::Runtime &rt, const jsi::Value &thisVal,
+                 const jsi::Value *args, size_t count) -> jsi::Value {
+            return this->cpp_uniffi_foobar_checksum_func_ext_secp_sign(
                 rt, thisVal, args, count);
           });
   props["ubrn_uniffi_foobar_checksum_func_ext_sha256"] =
@@ -2621,6 +2752,73 @@ jsi::Value NativeFoobar::cpp_uniffi_foobar_fn_func_ext_scrypt(
 
   return uniffi::foobar::Bridging<RustBuffer>::toJs(rt, callInvoker, value);
 }
+jsi::Value NativeFoobar::cpp_uniffi_foobar_fn_func_ext_secp_from_seed(
+    jsi::Runtime &rt, const jsi::Value &thisVal, const jsi::Value *args,
+    size_t count) {
+  RustCallStatus status =
+      uniffi::foobar::Bridging<RustCallStatus>::rustSuccess(rt);
+  auto value = uniffi_foobar_fn_func_ext_secp_from_seed(
+      uniffi::foobar::Bridging<RustBuffer>::fromJs(rt, callInvoker, args[0]),
+      &status);
+  uniffi::foobar::Bridging<RustCallStatus>::copyIntoJs(rt, callInvoker, status,
+                                                       args[count - 1]);
+
+  return uniffi::foobar::Bridging<RustBuffer>::toJs(rt, callInvoker, value);
+}
+jsi::Value NativeFoobar::cpp_uniffi_foobar_fn_func_ext_secp_pub_compress(
+    jsi::Runtime &rt, const jsi::Value &thisVal, const jsi::Value *args,
+    size_t count) {
+  RustCallStatus status =
+      uniffi::foobar::Bridging<RustCallStatus>::rustSuccess(rt);
+  auto value = uniffi_foobar_fn_func_ext_secp_pub_compress(
+      uniffi::foobar::Bridging<RustBuffer>::fromJs(rt, callInvoker, args[0]),
+      &status);
+  uniffi::foobar::Bridging<RustCallStatus>::copyIntoJs(rt, callInvoker, status,
+                                                       args[count - 1]);
+
+  return uniffi::foobar::Bridging<RustBuffer>::toJs(rt, callInvoker, value);
+}
+jsi::Value NativeFoobar::cpp_uniffi_foobar_fn_func_ext_secp_pub_expand(
+    jsi::Runtime &rt, const jsi::Value &thisVal, const jsi::Value *args,
+    size_t count) {
+  RustCallStatus status =
+      uniffi::foobar::Bridging<RustCallStatus>::rustSuccess(rt);
+  auto value = uniffi_foobar_fn_func_ext_secp_pub_expand(
+      uniffi::foobar::Bridging<RustBuffer>::fromJs(rt, callInvoker, args[0]),
+      &status);
+  uniffi::foobar::Bridging<RustCallStatus>::copyIntoJs(rt, callInvoker, status,
+                                                       args[count - 1]);
+
+  return uniffi::foobar::Bridging<RustBuffer>::toJs(rt, callInvoker, value);
+}
+jsi::Value NativeFoobar::cpp_uniffi_foobar_fn_func_ext_secp_recover(
+    jsi::Runtime &rt, const jsi::Value &thisVal, const jsi::Value *args,
+    size_t count) {
+  RustCallStatus status =
+      uniffi::foobar::Bridging<RustCallStatus>::rustSuccess(rt);
+  auto value = uniffi_foobar_fn_func_ext_secp_recover(
+      uniffi::foobar::Bridging<RustBuffer>::fromJs(rt, callInvoker, args[0]),
+      uniffi::foobar::Bridging<RustBuffer>::fromJs(rt, callInvoker, args[1]),
+      uniffi_jsi::Bridging<int32_t>::fromJs(rt, callInvoker, args[2]), &status);
+  uniffi::foobar::Bridging<RustCallStatus>::copyIntoJs(rt, callInvoker, status,
+                                                       args[count - 1]);
+
+  return uniffi::foobar::Bridging<RustBuffer>::toJs(rt, callInvoker, value);
+}
+jsi::Value NativeFoobar::cpp_uniffi_foobar_fn_func_ext_secp_sign(
+    jsi::Runtime &rt, const jsi::Value &thisVal, const jsi::Value *args,
+    size_t count) {
+  RustCallStatus status =
+      uniffi::foobar::Bridging<RustCallStatus>::rustSuccess(rt);
+  auto value = uniffi_foobar_fn_func_ext_secp_sign(
+      uniffi::foobar::Bridging<RustBuffer>::fromJs(rt, callInvoker, args[0]),
+      uniffi::foobar::Bridging<RustBuffer>::fromJs(rt, callInvoker, args[1]),
+      &status);
+  uniffi::foobar::Bridging<RustCallStatus>::copyIntoJs(rt, callInvoker, status,
+                                                       args[count - 1]);
+
+  return uniffi::foobar::Bridging<RustBuffer>::toJs(rt, callInvoker, value);
+}
 jsi::Value NativeFoobar::cpp_uniffi_foobar_fn_func_ext_sha256(
     jsi::Runtime &rt, const jsi::Value &thisVal, const jsi::Value *args,
     size_t count) {
@@ -2896,6 +3094,41 @@ jsi::Value NativeFoobar::cpp_uniffi_foobar_checksum_func_ext_scrypt(
     jsi::Runtime &rt, const jsi::Value &thisVal, const jsi::Value *args,
     size_t count) {
   auto value = uniffi_foobar_checksum_func_ext_scrypt();
+
+  return uniffi_jsi::Bridging<uint16_t>::toJs(rt, callInvoker, value);
+}
+jsi::Value NativeFoobar::cpp_uniffi_foobar_checksum_func_ext_secp_from_seed(
+    jsi::Runtime &rt, const jsi::Value &thisVal, const jsi::Value *args,
+    size_t count) {
+  auto value = uniffi_foobar_checksum_func_ext_secp_from_seed();
+
+  return uniffi_jsi::Bridging<uint16_t>::toJs(rt, callInvoker, value);
+}
+jsi::Value NativeFoobar::cpp_uniffi_foobar_checksum_func_ext_secp_pub_compress(
+    jsi::Runtime &rt, const jsi::Value &thisVal, const jsi::Value *args,
+    size_t count) {
+  auto value = uniffi_foobar_checksum_func_ext_secp_pub_compress();
+
+  return uniffi_jsi::Bridging<uint16_t>::toJs(rt, callInvoker, value);
+}
+jsi::Value NativeFoobar::cpp_uniffi_foobar_checksum_func_ext_secp_pub_expand(
+    jsi::Runtime &rt, const jsi::Value &thisVal, const jsi::Value *args,
+    size_t count) {
+  auto value = uniffi_foobar_checksum_func_ext_secp_pub_expand();
+
+  return uniffi_jsi::Bridging<uint16_t>::toJs(rt, callInvoker, value);
+}
+jsi::Value NativeFoobar::cpp_uniffi_foobar_checksum_func_ext_secp_recover(
+    jsi::Runtime &rt, const jsi::Value &thisVal, const jsi::Value *args,
+    size_t count) {
+  auto value = uniffi_foobar_checksum_func_ext_secp_recover();
+
+  return uniffi_jsi::Bridging<uint16_t>::toJs(rt, callInvoker, value);
+}
+jsi::Value NativeFoobar::cpp_uniffi_foobar_checksum_func_ext_secp_sign(
+    jsi::Runtime &rt, const jsi::Value &thisVal, const jsi::Value *args,
+    size_t count) {
+  auto value = uniffi_foobar_checksum_func_ext_secp_sign();
 
   return uniffi_jsi::Bridging<uint16_t>::toJs(rt, callInvoker, value);
 }
