@@ -12,8 +12,8 @@ importers:
         specifier: ^7.28.4
         version: 7.28.4
       uniffi-bindgen-react-native:
-        specifier: 0.29.3-1
-        version: 0.29.3-1
+        specifier: github:jhugman/uniffi-bindgen-react-native#main
+        version: https://codeload.github.com/jhugman/uniffi-bindgen-react-native/tar.gz/d93883bc0813e807fb18854c30b4db86683e3be2
     devDependencies:
       '@commitlint/config-conventional':
         specifier: ^19.8.1
@@ -4674,8 +4674,9 @@ packages:
     resolution: {integrity: sha512-+QBBXBCvifc56fsbuxZQ6Sic3wqqc3WWaqxs58gvJrcOuN83HGTCwz3oS5phzU9LthRNE9VrJCFCLUgHeeFnfA==}
     engines: {node: '>=18'}
 
-  uniffi-bindgen-react-native@0.29.3-1:
-    resolution: {integrity: sha512-o6gXZsAh55yuvhwF2WSFdIHV4phyfWcCmg4DuyfJWJ7CvUz1UcIz2S4u9SmXAz1jsuqvu6Xc9hexrRBB0a5osg==}
+  uniffi-bindgen-react-native@https://codeload.github.com/jhugman/uniffi-bindgen-react-native/tar.gz/d93883bc0813e807fb18854c30b4db86683e3be2:
+    resolution: {tarball: https://codeload.github.com/jhugman/uniffi-bindgen-react-native/tar.gz/d93883bc0813e807fb18854c30b4db86683e3be2}
+    version: 0.29.3-1
     hasBin: true
 
   universal-user-agent@7.0.3:
@@ -10527,7 +10528,7 @@ snapshots:
 
   unicorn-magic@0.3.0: {}
 
-  uniffi-bindgen-react-native@0.29.3-1: {}
+  uniffi-bindgen-react-native@https://codeload.github.com/jhugman/uniffi-bindgen-react-native/tar.gz/d93883bc0813e807fb18854c30b4db86683e3be2: {}
 
   universal-user-agent@7.0.3: {}
 
