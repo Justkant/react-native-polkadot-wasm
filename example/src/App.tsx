@@ -1,12 +1,10 @@
-import { Text, View, StyleSheet } from 'react-native';
-import { multiply } from 'react-native-wasm-crypto-test';
-
-const result = multiply(3, 7);
+import { StyleSheet, Text, View } from 'react-native';
+import { bip39Generate } from 'react-native-wasm-crypto-test';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Text>Result: {bip39Generate(24)}</Text>
     </View>
   );
 }

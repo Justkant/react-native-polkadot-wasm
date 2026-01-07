@@ -32,7 +32,14 @@
     "!**/.*"
   ],
   "scripts": {
-    "example": "yarn workspace react-native-wasm-crypto-test-example",
+    "ubrn:ios": "ubrn build ios --and-generate && (cd example/ios && pod install)",
+    "ubrn:android": "ubrn build android --and-generate",
+    "ubrn:web": "ubrn build web",
+    "ubrn:checkout": "ubrn checkout",
+    "ubrn:clean": "rm -rfv cpp/ android/CMakeLists.txt android/src/main/java android/*.cpp ios/ src/Native* src/index.*ts* src/generated/",
+    "example:start": "pnpm --filter react-native-wasm-crypto-test-example start",
+    "example:android": "pnpm --filter react-native-wasm-crypto-test-example android",
+    "example:ios": "pnpm --filter react-native-wasm-crypto-test-example ios",
     "clean": "del-cli android/build example/android/build example/android/app/build example/ios/build lib",
     "prepare": "bob build",
     "typecheck": "tsc",
@@ -55,6 +62,10 @@
     "url": "https://github.com/Justkant/react-native-wasm-crypto-test/issues"
   },
   "homepage": "https://github.com/Justkant/react-native-wasm-crypto-test#readme",
+  "dependencies": {
+    "@babel/runtime": "^7.28.4",
+    "uniffi-bindgen-react-native": "0.29.3-1"
+  },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
@@ -90,7 +101,6 @@
   "workspaces": [
     "example"
   ],
-  "packageManager": "yarn@4.11.0",
   "react-native-builder-bob": {
     "source": "src",
     "output": "lib",
@@ -119,6 +129,9 @@
   },
   "jest": {
     "preset": "react-native",
+    "transformIgnorePatterns": [
+      "node_modules/(?!(?:.*\\/node_modules\\/)?(?:react-native|@react-native|@react-native-community)\\/)"
+    ],
     "modulePathIgnorePatterns": [
       "<rootDir>/example/node_modules",
       "<rootDir>/lib/"
@@ -165,5 +178,6 @@
       "release-it"
     ],
     "version": "0.56.0"
-  }
+  },
+  "packageManager": "pnpm@10.26.0+sha512.3b3f6c725ebe712506c0ab1ad4133cf86b1f4b687effce62a9b38b4d72e3954242e643190fc51fa1642949c735f403debd44f5cb0edd657abe63a8b6a7e1e402"
 }
